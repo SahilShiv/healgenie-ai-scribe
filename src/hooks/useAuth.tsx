@@ -6,6 +6,7 @@ type User = {
   id: string;
   name: string;
   email: string;
+  userType: string; // Added userType property to the User type
   avatarImage?: string;
 };
 
@@ -40,6 +41,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         id: '1',
         name: 'Dr. Jane Smith',
         email: email,
+        userType: 'doctor', // Default userType
         avatarImage: '', // Add a default avatar or leave empty
       });
       return true;
@@ -56,6 +58,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         id: '1',
         name: userData.name,
         email: userData.email,
+        userType: userData.userType, // Use the provided userType
         avatarImage: userData.avatarImage,
       });
       return true;
