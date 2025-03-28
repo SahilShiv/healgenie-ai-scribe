@@ -8,6 +8,38 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Search, Mic, User, FileText, Calendar, Clock, Plus } from 'lucide-react';
 import RecentPatientsTable from '@/components/dashboard/RecentPatientsTable';
 
+// Define mock patient data
+const mockPatients = [
+  {
+    id: 1,
+    name: 'John Doe',
+    age: 45,
+    lastVisit: '2023-06-15',
+    condition: 'Hypertension'
+  },
+  {
+    id: 2,
+    name: 'Jane Smith',
+    age: 32,
+    lastVisit: '2023-06-20',
+    condition: 'Diabetes'
+  },
+  {
+    id: 3,
+    name: 'Robert Johnson',
+    age: 58,
+    lastVisit: '2023-06-22',
+    condition: 'Arthritis'
+  },
+  {
+    id: 4,
+    name: 'Emily Williams',
+    age: 29,
+    lastVisit: '2023-06-25',
+    condition: 'Migraine'
+  }
+];
+
 const DoctorDashboard = () => {
   const { user, isAuthenticated } = useAuth();
   const [isRecording, setIsRecording] = useState(false);
@@ -101,7 +133,7 @@ const DoctorDashboard = () => {
                 </Link>
               </CardHeader>
               <CardContent>
-                <RecentPatientsTable />
+                <RecentPatientsTable patients={mockPatients} />
               </CardContent>
             </Card>
           </div>
