@@ -9,7 +9,266 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      doctor_patients: {
+        Row: {
+          created_at: string
+          doctor_id: string
+          id: string
+          last_visit: string | null
+          patient_id: string
+        }
+        Insert: {
+          created_at?: string
+          doctor_id: string
+          id?: string
+          last_visit?: string | null
+          patient_id: string
+        }
+        Update: {
+          created_at?: string
+          doctor_id?: string
+          id?: string
+          last_visit?: string | null
+          patient_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "doctor_patients_doctor_id_fkey"
+            columns: ["doctor_id"]
+            isOneToOne: false
+            referencedRelation: "doctor_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "doctor_patients_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "patient_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      doctor_profiles: {
+        Row: {
+          created_at: string
+          designation: string
+          experience: number
+          id: string
+          specialty: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          designation: string
+          experience: number
+          id: string
+          specialty: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          designation?: string
+          experience?: number
+          id?: string
+          specialty?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "doctor_profiles_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      patient_profiles: {
+        Row: {
+          age: number
+          allergies: string[] | null
+          created_at: string
+          date_of_birth: string
+          id: string
+          medical_history: string | null
+          updated_at: string
+        }
+        Insert: {
+          age: number
+          allergies?: string[] | null
+          created_at?: string
+          date_of_birth: string
+          id: string
+          medical_history?: string | null
+          updated_at?: string
+        }
+        Update: {
+          age?: number
+          allergies?: string[] | null
+          created_at?: string
+          date_of_birth?: string
+          id?: string
+          medical_history?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "patient_profiles_id_fkey"
+            columns: ["id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      prescription_medicines: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          prescription_id: string
+          price: number | null
+          timing: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          prescription_id: string
+          price?: number | null
+          timing: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          prescription_id?: string
+          price?: number | null
+          timing?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "prescription_medicines_prescription_id_fkey"
+            columns: ["prescription_id"]
+            isOneToOne: false
+            referencedRelation: "prescriptions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      prescriptions: {
+        Row: {
+          created_at: string
+          disease: string | null
+          doctor_id: string
+          id: string
+          is_active: boolean
+          patient_id: string
+          special_notes: string | null
+          symptoms: string[] | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          disease?: string | null
+          doctor_id: string
+          id?: string
+          is_active?: boolean
+          patient_id: string
+          special_notes?: string | null
+          symptoms?: string[] | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          disease?: string | null
+          doctor_id?: string
+          id?: string
+          is_active?: boolean
+          patient_id?: string
+          special_notes?: string | null
+          symptoms?: string[] | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "prescriptions_doctor_id_fkey"
+            columns: ["doctor_id"]
+            isOneToOne: false
+            referencedRelation: "doctor_profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "prescriptions_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "patient_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profile_symbols: {
+        Row: {
+          created_at: string
+          icon_url: string
+          id: number
+          name: string
+        }
+        Insert: {
+          created_at?: string
+          icon_url: string
+          id?: number
+          name: string
+        }
+        Update: {
+          created_at?: string
+          icon_url?: string
+          id?: number
+          name?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          first_name: string
+          id: string
+          last_name: string
+          phone: string | null
+          profile_symbol_id: number | null
+          updated_at: string
+          user_type: string
+        }
+        Insert: {
+          created_at?: string
+          first_name: string
+          id: string
+          last_name: string
+          phone?: string | null
+          profile_symbol_id?: number | null
+          updated_at?: string
+          user_type: string
+        }
+        Update: {
+          created_at?: string
+          first_name?: string
+          id?: string
+          last_name?: string
+          phone?: string | null
+          profile_symbol_id?: number | null
+          updated_at?: string
+          user_type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_profile_symbol_id_fkey"
+            columns: ["profile_symbol_id"]
+            isOneToOne: false
+            referencedRelation: "profile_symbols"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
