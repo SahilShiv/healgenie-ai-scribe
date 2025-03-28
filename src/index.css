@@ -1,92 +1,87 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 250 33% 99%;
+    --foreground: 250 10% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 250 10% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 250 10% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 256 81% 75%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 256 33% 54%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 250 20% 96%;
+    --muted-foreground: 250 5% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 256 33% 95%;
+    --accent-foreground: 250 10% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 250 20% 90%;
+    --input: 250 20% 90%;
+    --ring: 256 81% 75%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-foreground: 250 5% 45%;
+    --sidebar-primary: 256 81% 75%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 256 33% 95%;
+    --sidebar-accent-foreground: 250 10% 15%;
+    --sidebar-border: 250 20% 90%;
+    --sidebar-ring: 256 81% 75%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 250 25% 10%;
+    --foreground: 250 20% 96%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 250 25% 12%;
+    --card-foreground: 250 20% 96%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 250 25% 12%;
+    --popover-foreground: 250 20% 96%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 256 65% 62%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 256 33% 40%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 250 25% 20%;
+    --muted-foreground: 250 5% 75%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 250 25% 18%;
+    --accent-foreground: 250 20% 96%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 40.6%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --border: 250 25% 25%;
+    --input: 250 25% 25%;
+    --ring: 256 65% 62%;
+
+    --sidebar-background: 250 25% 15%;
+    --sidebar-foreground: 250 5% 75%;
+    --sidebar-primary: 256 65% 62%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 250 25% 18%;
+    --sidebar-accent-foreground: 250 5% 75%;
+    --sidebar-border: 250 25% 25%;
+    --sidebar-ring: 256 65% 62%;
   }
 }
 
@@ -97,5 +92,27 @@
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  .healgenie-gradient {
+    @apply bg-gradient-to-r from-healgenie-300 via-healgenie-400 to-healgenie-500;
+  }
+  
+  .healgenie-card {
+    @apply bg-white dark:bg-healgenie-800 shadow-md rounded-xl p-6 border border-healgenie-100 dark:border-healgenie-700;
+  }
+  
+  .healgenie-button {
+    @apply px-6 py-3 font-medium rounded-lg transition-all duration-300
+           bg-healgenie-300 text-white hover:bg-healgenie-400
+           dark:bg-healgenie-500 dark:hover:bg-healgenie-400;
+  }
+  
+  .healgenie-button-outline {
+    @apply px-6 py-3 font-medium rounded-lg transition-all duration-300
+           bg-transparent border border-healgenie-300 text-healgenie-500
+           hover:bg-healgenie-50 dark:border-healgenie-500 dark:text-healgenie-300
+           dark:hover:bg-healgenie-800;
   }
 }
