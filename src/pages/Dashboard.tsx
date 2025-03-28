@@ -1,11 +1,22 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import Navbar from '@/components/layout/Navbar';
 
 const Dashboard = () => {
   const { user, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      if (user.userType === 'doctor') {
+        navigate('/doctor-dashboard');
+      } else if (user.userType === 'patient') {
+        navigate('/patient-dashboard');
+      }
+    }
+  }, [isAuthenticated, user, navigate]);
 
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
@@ -16,22 +27,10 @@ const Dashboard = () => {
       <Navbar />
       <div className="flex-1 pt-20 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto w-full">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold">Welcome, {user?.name}</h1>
+          <h1 className="text-3xl font-bold">Redirecting to dashboard...</h1>
           <p className="text-muted-foreground">
-            Your {user?.userType} dashboard
+            Please wait while we redirect you to your personalized dashboard.
           </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="border rounded-lg p-6 shadow-sm">
-            <h2 className="text-xl font-semibold mb-4">Getting Started</h2>
-            <p>This is your new HealGenie dashboard. More features coming soon!</p>
-          </div>
-          
-          <div className="border rounded-lg p-6 shadow-sm">
-            <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
-            <p>No recent activity to display.</p>
-          </div>
         </div>
       </div>
     </div>
